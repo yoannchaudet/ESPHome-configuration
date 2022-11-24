@@ -1,0 +1,64 @@
+#
+# Variables
+#
+
+esphome:
+  name: shed-controller
+
+#
+# Networking
+#
+
+# <SNIP>
+
+#
+# Real ESP configuration
+# Base: Lilygo T-Relay-8
+#
+
+# Board
+esp32:
+  board: esp32dev
+
+# Enable logging
+logger:
+
+# Status led
+status_led:
+  pin:
+    number: GPIO25
+
+# Relays
+switch:
+  - platform: gpio
+    pin: GPIO33
+    id: relay_1
+    name: "Relay 1"
+  - platform: gpio
+    pin: GPIO32
+    id: relay_2
+    name: "Relay 2"
+  - platform: gpio
+    pin: GPIO13
+    id: relay_3
+    name: "Relay 3"
+  - platform: gpio
+    pin: GPIO12
+    id: relay_4
+    name: "Relay 4"
+  - platform: gpio
+    pin: GPIO21
+    id: relay_5
+    name: "Relay 5"
+  - platform: gpio
+    pin: GPIO19
+    id: relay_6
+    name: "Relay 6"
+  - platform: gpio
+    pin: GPIO18
+    id: relay_7
+    name: "Relay 7"
+  - platform: gpio
+    pin: GPIO5
+    id: relay_8
+    name: "Relay 8"

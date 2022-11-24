@@ -1,0 +1,41 @@
+#
+# Variables
+#
+
+esphome:
+  name: yoann-office-co2-sensor
+
+#
+# Networking
+#
+
+# <SNIP>
+
+#
+# Real ESP configuration
+# Base: Wemos D1 + MH-Z19B
+#
+
+# Board
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+  baud_rate: 0
+
+# Configure UART (i.e. where is RX and TX on the ESP)
+uart:
+  rx_pin: GPIO3
+  tx_pin: GPIO1
+  baud_rate: 9600
+
+# Configure the MH-Z19 sensor
+sensor:
+  - platform: mhz19
+    co2:
+      name: "MH-Z19 CO2 Value"
+    temperature:
+      name: "MH-Z19 Temperature"
+    update_interval: 60s
+    automatic_baseline_calibration: false
