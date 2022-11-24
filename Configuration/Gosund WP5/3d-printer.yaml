@@ -1,0 +1,79 @@
+#
+# Variables
+#
+
+substitutions:
+  device_id: _3d_printer
+  device_name: 3d-printer
+  friendly_name: 3D Printer
+
+esphome:
+  name: "${device_name}"
+
+#
+# Networking
+#
+
+# <SNIP>
+
+#
+# Real ESP configuration
+# Base: Gosund WP5
+#
+
+# Board
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO4
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${friendly_name} Button"
+    id: "${device_id}_button"
+    on_press:
+      - switch.toggle: "${device_id}_relay"
+  - platform: status
+    name: "${friendly_name} Status"
+    id: "${device_id}_status"
+
+switch:
+  - platform: gpio
+    name: "${friendly_name} Relay"
+    id: "${device_id}_relay"
+    pin: GPIO14
+    on_turn_on:
+      - output.turn_on: led
+    on_turn_off:
+      - output.turn_off: led
+
+status_led:
+  pin:
+    number: GPIO12
+    inverted: yes
+
+output:
+  - platform: gpio
+    pin: GPIO13
+    inverted: true
+    id: led
+
+sensor:
+  - platform: wifi_signal
+    name: "${friendly_name} WiFi signal"
+    id: "${device_id}_wifi_signal"
+    update_interval: 60s
+  - platform: uptime
+    name: "${friendly_name} Uptime"
+    id: "${device_id}_uptime"
+    update_interval: 60s
+
+text_sensor:
+  - platform: version
+    name: "${friendly_name} ESPHome Version"
+    id: "${device_id}_esphome_version"
