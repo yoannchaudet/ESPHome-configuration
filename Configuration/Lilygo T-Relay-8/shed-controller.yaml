@@ -2,8 +2,13 @@
 # Variables
 #
 
+substitutions:
+  device_id: shed_controller
+  device_name: shed-controller
+  friendly_name: Shed Controller
+
 esphome:
-  name: shed-controller
+  name: "${device_name}"
 
 #
 # Networking
@@ -22,43 +27,122 @@ esp32:
 
 # Enable logging
 logger:
+  baud_rate: 0
 
 # Status led
 status_led:
   pin:
     number: GPIO25
 
+#
 # Relays
+#
 switch:
   - platform: gpio
     pin: GPIO33
-    id: relay_1
-    name: "Relay 1"
+    id: "${device_id}_relay_1"
+    name: "${friendly_name} Relay 1"
   - platform: gpio
     pin: GPIO32
-    id: relay_2
-    name: "Relay 2"
+    id: "${device_id}_relay_2"
+    name: "${friendly_name} Relay 2"
   - platform: gpio
     pin: GPIO13
-    id: relay_3
-    name: "Relay 3"
+    id: "${device_id}_relay_3"
+    name: "${friendly_name} Relay 3"
   - platform: gpio
     pin: GPIO12
-    id: relay_4
-    name: "Relay 4"
+    id: "${device_id}_relay_4"
+    name: "${friendly_name} Relay 4"
   - platform: gpio
     pin: GPIO21
-    id: relay_5
-    name: "Relay 5"
+    id: "${device_id}_relay_5"
+    name: "${friendly_name} Relay 5"
   - platform: gpio
     pin: GPIO19
-    id: relay_6
-    name: "Relay 6"
+    id: "${device_id}_relay_6"
+    name: "${friendly_name} Relay 6"
   - platform: gpio
     pin: GPIO18
-    id: relay_7
-    name: "Relay 7"
+    id: "${device_id}_relay_7"
+    name: "${friendly_name} Relay 7"
   - platform: gpio
     pin: GPIO5
-    id: relay_8
-    name: "Relay 8"
+    id: "${device_id}_relay_8"
+    name: "${friendly_name} Relay 8"
+
+#
+# VE.direct
+# via https://github.com/KinDR007/VictronMPPT-ESPHOME
+#
+
+external_components:
+  - source: github://KinDR007/VictronMPPT-ESPHOME@main
+
+uart:
+  id: uart0
+  rx_pin: GPIO14
+  baud_rate: 19200
+  rx_buffer_size: 256
+
+victron:
+  uart_id: uart0
+  id: victron0
+  throttle: 10s # don't report more than every 10s (MPTT controller actually emits every 1s)
+
+# Sensors
+sensor:
+  - platform: victron
+    victron_id: victron0
+    max_power_yesterday:
+      name: "${friendly_name} Victron: max power yesterday"
+    max_power_today:
+      name: "${friendly_name} Victron: max power today"
+    yield_yesterday:
+      name: "${friendly_name} Victron: yield yesterday"
+    yield_total:
+      name: "${friendly_name} Victron: yield total"
+    panel_voltage:
+      name: "${friendly_name} Victron: panel voltage"
+    panel_power:
+      name: "${friendly_name} Victron: panel power"
+    battery_voltage:
+      name: "${friendly_name} Victron: battery voltage"
+    battery_current:
+      name: "${friendly_name} Victron: panel current"
+    day_number:
+      name: "${friendly_name} Victron: day number"
+    charging_mode_id:
+      name: "${friendly_name} Victron: charging mode id"
+    error_code:
+      name: "${friendly_name} Victron: error code"
+    tracking_mode_id:
+      name: "${friendly_name} Victron: tracking mode id"
+    load_current:
+      name: "${friendly_name} Victron: load current"
+    battery_temperature:
+      name: "${friendly_name} Victron: battery temperature"
+
+text_sensor:
+  - platform: victron
+    victron_id: victron0
+    charging_mode:
+      name: "${friendly_name} Victron: charging mode"
+    error:
+      name: "${friendly_name} Victron: error"
+    tracking_mode:
+      name: "${friendly_name} Victron: tracking mode"
+    firmware_version:
+      name: "${friendly_name} Victron: firmware version"
+    device_type:
+      name: "${friendly_name} Victron: device type"
+    serial_number:
+      name: "${friendly_name} Victron: serial number"
+
+binary_sensor:
+  - platform: victron
+    victron_id: victron0
+    load_state:
+      name: "${friendly_name} Victron: load state"
+    relay_state:
+      name: "${friendly_name} Victron: relay state"
