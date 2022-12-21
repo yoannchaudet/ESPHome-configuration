@@ -120,8 +120,6 @@ sensor:
       name: "${friendly_name} Victron: tracking mode id"
     load_current:
       name: "${friendly_name} Victron: load current"
-    battery_temperature:
-      name: "${friendly_name} Victron: battery temperature"
 
 text_sensor:
   - platform: victron
