@@ -1,0 +1,30 @@
+#
+# Variables
+#
+
+substitutions:
+  device_id: christmas_outdoor_lights
+  device_name: christmas-outdoor-lights
+  friendly_name: Christmas Outdoor Lights
+
+#
+# Networking
+#
+
+<<: !include {
+  file: "common.networking.yaml",
+  vars: {
+    device_id: "${device_id}",
+    encryption_key: !secret christmas_outdoor_lights_encryption_key,
+    ota_password: !secret christmas_outdoor_lights_ota_password
+  }
+}
+
+# <SNIP>
+
+#
+# Real ESP configuration
+# Base: Teckin SP10
+#
+
+<<: !include common.teckin-sp10.yaml
