@@ -1,0 +1,24 @@
+name: Test
+
+# Trugger
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install ESPHome
+        run: pip3 install esphome
+
+      - name: Check ESPHome version
+        run: esphome version
+
+      - name: Test configuration
+        run: ./script/test.ps1
