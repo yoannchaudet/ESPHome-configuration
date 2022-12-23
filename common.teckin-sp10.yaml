@@ -3,6 +3,7 @@ esp8266:
 
 esphome:
   name: "${device_name}"
+  comment: "${friendly_name} (Teckin SP10 smart outlet)"
 
 logger:
 
