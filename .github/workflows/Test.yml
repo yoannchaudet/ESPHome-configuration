@@ -9,7 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  validate:
+    name: Validate devices' configuration
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
