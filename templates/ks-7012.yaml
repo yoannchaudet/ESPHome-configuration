@@ -1,0 +1,34 @@
+esphome:
+  name: "${device_name}"
+  comment: "${friendly_name} (KS 7012 smart dimmer wall switch)"
+
+esp8266:
+  board: esp01_1m
+
+logger:
+  baud_rate: 0 # Disable UART logging (report of it bricking the device)
+
+# Configure UART
+uart:
+  rx_pin: GPIO3
+  tx_pin: GPIO1
+  baud_rate: 9600
+
+# Register the Tuya MCU connection
+tuya:
+
+light:
+  - platform: tuya
+    id: "${device_id}_light"
+    name: "${friendly_name}"
+    dimmer_datapoint: 2 # where is the dimmer
+    switch_datapoint: 1 # where is the switch
+    min_value: 42 # min value for the dimmer
+    max_value: 255 # max value for the dimmer
+
+sensor:
+  - !include ../common/sensor.wifi_signal.yaml
+  - !include ../common/sensor.uptime.yaml
+
+text_sensor:
+  - !include ../common/text_sensor.version.yaml
