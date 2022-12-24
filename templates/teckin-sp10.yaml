@@ -43,16 +43,8 @@ output:
     id: led
 
 sensor:
-  - platform: wifi_signal
-    name: "${friendly_name} WiFi signal"
-    id: "${device_id}_wifi_signal"
-    update_interval: 60s
-  - platform: uptime
-    name: "${friendly_name} Uptime"
-    id: "${device_id}_uptime"
-    update_interval: 60s
+  - !include ../common/sensor.wifi_signal.yaml
+  - !include ../common/sensor.uptime.yaml
 
 text_sensor:
-  - platform: version
-    name: "${friendly_name} ESPHome Version"
-    id: "${device_id}_esphome_version"
+  - !include ../common/text_sensor.version.yaml
