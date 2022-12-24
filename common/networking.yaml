@@ -9,9 +9,9 @@ ota:
 
 # Configure Wifi + backup AP
 wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
   ap:
     ssid: ${device_id}
-    password: !secret wifi_ap_password
+    password: ${wifi_ap_password}
 captive_portal:

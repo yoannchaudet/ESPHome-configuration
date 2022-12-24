@@ -7,7 +7,7 @@ Despite its use of YAML, ESPHome is great and has taken over all my devices. Thi
 ## Structure
 
 - 📁 `common`, reusable bits
-- 📁 `device-templates`, reusable device templates (define specific type of devices)
+- 📁 `templates`, reusable templates (define specific type of devices)
 - 📁 `scripts`, some utilities (e.g. the continuous integration tests)
 - `.secrets.yaml`, a stub file describing the secrets needed by all devices
 - `device.*.yaml`, individual device definitions (define specific instances of devices)
