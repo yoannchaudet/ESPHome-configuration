@@ -1,4 +1,4 @@
-# ESPHome
+# ESPHome-configuration
 
 I started to experiment with [ESPHome][esphome] as an alternative to [Tasmota][tasmota].
 
