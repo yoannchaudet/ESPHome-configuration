@@ -76,53 +76,81 @@ switch:
 
 external_components:
   - source: github://KinDR007/VictronMPPT-ESPHOME@main
+  - source: github://KinDR007/VictronSmartShunt-ESPHOME@main
 
 uart:
-  id: uart0
-  rx_pin: GPIO14
-  baud_rate: 19200
-  rx_buffer_size: 256
+  # MPTT Charge Controller
+  - id: uart0
+    rx_pin: GPIO14
+    baud_rate: 19200
+    rx_buffer_size: 256
+  # Smart Shunt
+  - id: uart1
+    rx_pin: GPIO15
+    baud_rate: 19200
+    stop_bits: 1
+    data_bits: 8
+    parity: NONE
+    rx_buffer_size: 256
 
+# MPTT Charge Controller
 victron:
-  uart_id: uart0
   id: victron0
-  throttle: 10s # don't report more than every 10s (MPTT controller actually emits every 1s)
+  uart_id: uart0
+  throttle: 10s # real is 1 datapoint per minute
+
+# Smart Shunt
+victron_smart_shunt:
+  uart_id: uart1
 
 # Sensors
 sensor:
   - !include ./common/sensor.wifi_signal.yaml
   - !include ./common/sensor.uptime.yaml
+
+  # MPTT Charge Controller
   - platform: victron
     victron_id: victron0
     max_power_yesterday:
-      name: "${friendly_name} Victron: max power yesterday"
+      name: "${friendly_name} Charge Controller: max power yesterday"
     max_power_today:
-      name: "${friendly_name} Victron: max power today"
+      name: "${friendly_name} Charge Controller: max power today"
     yield_yesterday:
-      name: "${friendly_name} Victron: yield yesterday"
+      name: "${friendly_name} Charge Controller: yield yesterday"
     yield_total:
-      name: "${friendly_name} Victron: yield total"
+      name: "${friendly_name} Charge Controller: yield total"
     panel_voltage:
-      name: "${friendly_name} Victron: panel voltage"
+      name: "${friendly_name} Charge Controller: panel voltage"
     panel_power:
-      name: "${friendly_name} Victron: panel power"
+      name: "${friendly_name} Charge Controller: panel power"
     battery_voltage:
-      name: "${friendly_name} Victron: battery voltage"
+      name: "${friendly_name} Charge Controller: battery voltage"
     battery_current:
-      name: "${friendly_name} Victron: panel current"
+      name: "${friendly_name} Charge Controller: panel current"
     day_number:
-      name: "${friendly_name} Victron: day number"
+      name: "${friendly_name} Charge Controller: day number"
     charging_mode_id:
-      name: "${friendly_name} Victron: charging mode id"
+      name: "${friendly_name} Charge Controller: charging mode id"
     error_code:
-      name: "${friendly_name} Victron: error code"
+      name: "${friendly_name} Charge Controller: error code"
     tracking_mode_id:
-      name: "${friendly_name} Victron: tracking mode id"
+      name: "${friendly_name} Charge Controller: tracking mode id"
     load_current:
-      name: "${friendly_name} Victron: load current"
+      name: "${friendly_name} Charge Controller: load current"
+
+  # Smart Shunt
+  - platform: victron_smart_shunt
+    battery_voltage:
+      name: "${friendly_name} Shunt: battery voltage"
+    battery_current:
+      name: "${friendly_name} Shunt: battery current"
+    fw_version:
+      name: "${friendly_name} Shunt: firmware version"
 
 text_sensor:
   - !include ./common/text_sensor.version.yaml
+
+  # MPTT Charge Controller
   - platform: victron
     victron_id: victron0
     charging_mode:
@@ -137,11 +165,3 @@ text_sensor:
       name: "${friendly_name} Victron: device type"
     serial_number:
       name: "${friendly_name} Victron: serial number"
-
-binary_sensor:
-  - platform: victron
-    victron_id: victron0
-    load_state:
-      name: "${friendly_name} Victron: load state"
-    relay_state:
-      name: "${friendly_name} Victron: relay state"
