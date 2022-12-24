@@ -23,6 +23,11 @@ function Get-DeviceFiles {
 function Test-Device {
   process {
     & esphome config $_
+
+    # Abort on error
+    if ($LastExitCode -ne 0) {
+      throw "Configuration error for device $_"
+    }
   }
 }
 
