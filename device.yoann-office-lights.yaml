@@ -1,7 +1,7 @@
 substitutions:
   device_id: yoann_office_meetings_lights
   device_name: yoann-office-meeting-lights
-  friendly_name: Meetings Lights (Yoann Office)
+  friendly_name: Meetings Lights @ Yoann Office
 
 <<: !include {
   file: "common/networking.yaml",
