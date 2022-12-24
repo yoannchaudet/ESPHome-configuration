@@ -1,0 +1,4 @@
+platform: uptime
+name: "${friendly_name} Uptime"
+id: "${device_id}_uptime"
+update_interval: 60s

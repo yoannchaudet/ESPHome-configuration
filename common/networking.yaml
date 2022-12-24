@@ -1,0 +1,17 @@
+# Enable Home Assistant API and encryption
+api:
+  encryption:
+    key: ${encryption_key}
+
+# Set an OTA password
+ota:
+  password: ${ota_password}
+
+# Configure Wifi + backup AP
+wifi:
+  ssid: ${wifi_ssid}
+  password: ${wifi_password}
+  ap:
+    ssid: ${device_id}
+    password: ${wifi_ap_password}
+captive_portal:

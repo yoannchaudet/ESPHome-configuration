@@ -1,0 +1,3 @@
+platform: version
+name: "${friendly_name} ESPHome Version"
+id: "${device_id}_esphome_version"
