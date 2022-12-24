@@ -1,0 +1,18 @@
+substitutions:
+  device_id: bedroom_light
+  device_name: bedroom-light
+  friendly_name: Bedroom Light
+
+<<: !include {
+  file: "common/networking.yaml",
+  vars: {
+    device_id: "${device_id}",
+    wifi_ssid: !secret wifi_ssid,
+    wifi_password: !secret wifi_password,
+    wifi_ap_password: !secret wifi_ap_password,
+    encryption_key: !secret bedroom_light_encryption_key,
+    ota_password: !secret bedroom_light_ota_password,
+  }
+}
+
+<<: !include templates/gosund-wp5.yaml
