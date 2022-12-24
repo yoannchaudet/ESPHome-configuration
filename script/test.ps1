@@ -4,7 +4,14 @@
 <#
 .SYNOPSIS
 Test the configuration for each device file.
+
+.PARAMETER File
+Optional device file to test.
 #>
+
+param (
+  [string] $File
+)
 
 # Init
 Set-StrictMode -version 'Latest'
@@ -40,5 +47,12 @@ if (-Not (Test-Path -Path 'secrets.yaml')) {
   Copy-Item -Path '.secrets.yaml' -Destination 'secrets.yaml'
 }
 
-# Test each device
-Get-DeviceFiles | Test-Device
+# Test one device
+if ($File -and (Test-Path $File -PathType 'Leaf')) {
+  $File | Test-Device
+}
+
+# Test all devices
+else {
+  Get-DeviceFiles | Test-Device
+}

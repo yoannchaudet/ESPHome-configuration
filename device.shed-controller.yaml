@@ -76,7 +76,7 @@ switch:
 
 external_components:
   - source: github://KinDR007/VictronMPPT-ESPHOME@main
-  - source: github://KinDR007/VictronSmartShunt-ESPHOME@main
+  - source: github://yoannchaudet/VictronSmartShunt-ESPHOME@main
 
 uart:
   # MPTT Charge Controller
@@ -146,6 +146,28 @@ sensor:
       name: "${friendly_name} Shunt: battery current"
     fw_version:
       name: "${friendly_name} Shunt: firmware version"
+    last_full_charge:
+      name: "${friendly_name} Shunt: last full charge"
+    time_to_go:
+      name: "${friendly_name} Shunt: time to go"
+    min_battery_voltage:
+      name: "${friendly_name} Shunt: min battery voltage"
+    max_battery_voltage:
+      name: "${friendly_name} Shunt: max battery voltage"
+    instantaneous_power:
+      name: "${friendly_name} Shunt: instantaneous power"
+    discharged_energy:
+      name: "${friendly_name} Shunt: total discharged energy"
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: kWh
+    amount_of_charged:
+      name: "${friendly_name} Shunt: total charged energy"
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: kWh
+    state_of_charge:
+      name: "${friendly_name} Shunt: state of charge"
 
 text_sensor:
   - !include ./common/text_sensor.version.yaml
