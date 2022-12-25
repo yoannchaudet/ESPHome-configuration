@@ -76,7 +76,7 @@ switch:
 
 external_components:
   - source: github://KinDR007/VictronMPPT-ESPHOME@main
-  - source: github://yoannchaudet/VictronSmartShunt-ESPHOME@main
+  - source: github://yoannchaudet/VictronSmartShunt-ESPHOME@add-temp
 
 uart:
   # MPTT Charge Controller
@@ -168,6 +168,8 @@ sensor:
       unit_of_measurement: kWh
     state_of_charge:
       name: "${friendly_name} Shunt: state of charge"
+    battery_temperature:
+      name: "${friendly_name} Shunt: battery temperature"
 
 text_sensor:
   - !include ./common/text_sensor.version.yaml
