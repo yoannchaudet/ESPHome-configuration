@@ -76,7 +76,7 @@ switch:
 
 external_components:
   - source: github://KinDR007/VictronMPPT-ESPHOME@main
-  - source: github://yoannchaudet/VictronSmartShunt-ESPHOME@fix-typo
+  - source: github://yoannchaudet/VictronSmartShunt-ESPHOME@add-temp
     refresh: 0s
   # - source:
   #     type: local
@@ -158,8 +158,8 @@ sensor:
       name: "${friendly_name} Shunt: min battery voltage"
     max_battery_voltage:
       name: "${friendly_name} Shunt: max battery voltage"
-    instantaneous_power:
-      name: "${friendly_name} Shunt: instantaneous power"
+    # instantaneous_power:
+    #   name: "${friendly_name} Shunt: instantaneous power"
     discharged_energy:
       name: "${friendly_name} Shunt: total discharged energy"
       filters:
@@ -172,8 +172,8 @@ sensor:
       unit_of_measurement: kWh
     state_of_charge:
       name: "${friendly_name} Shunt: state of charge"
-    # battery_temperature:
-    #   name: "${friendly_name} Shunt: battery temperature"
+    battery_temperature:
+      name: "${friendly_name} Shunt: battery temperature"
 
 text_sensor:
   - !include ./common/text_sensor.version.yaml
