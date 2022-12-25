@@ -77,6 +77,10 @@ switch:
 external_components:
   - source: github://KinDR007/VictronMPPT-ESPHOME@main
   - source: github://yoannchaudet/VictronSmartShunt-ESPHOME@add-temp
+    refresh: 0s
+  # - source:
+  #     type: local
+  #     path: /Users/yoannchaudet/personal-repos/VictronSmartShunt-ESPHOME
 
 uart:
   # MPTT Charge Controller
@@ -154,8 +158,8 @@ sensor:
       name: "${friendly_name} Shunt: min battery voltage"
     max_battery_voltage:
       name: "${friendly_name} Shunt: max battery voltage"
-    instantaneous_power:
-      name: "${friendly_name} Shunt: instantaneous power"
+    # instantaneous_power:
+    #   name: "${friendly_name} Shunt: instantaneous power"
     discharged_energy:
       name: "${friendly_name} Shunt: total discharged energy"
       filters:
