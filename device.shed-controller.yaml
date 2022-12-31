@@ -193,3 +193,21 @@ text_sensor:
       name: "${friendly_name} Victron: device type"
     serial_number:
       name: "${friendly_name} Victron: serial number"
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO22
+      inverted: true
+      mode:
+        input: true
+        pullup: false
+    name: inverter-on
+  - platform: gpio
+    pin:
+      number: GPIO26
+      inverted: true
+      mode:
+        input: true
+        pullup: false
+    name: inverter-error
