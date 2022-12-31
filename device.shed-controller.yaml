@@ -68,6 +68,13 @@ switch:
     pin: GPIO5
     id: "${device_id}_relay_8"
     name: "${friendly_name} Relay 8"
+  - platform: template
+    id: "${device_id}_inverter"
+    name: "${friendly_name} Inverter"
+    turn_on_action:
+      - switch.turn_on: "${device_id}_relay_7"
+      - delay: 500ms
+      - switch.turn_off: "${device_id}_relay_7"
 
 #
 # VE.direct
@@ -201,7 +208,7 @@ binary_sensor:
       inverted: true
       mode:
         input: true
-        pullup: false
+        pullup: true
     name: inverter-on
   - platform: gpio
     pin:
@@ -209,5 +216,5 @@ binary_sensor:
       inverted: true
       mode:
         input: true
-        pullup: false
+        pullup: true
     name: inverter-error
