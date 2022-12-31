@@ -1,0 +1,36 @@
+esphome:
+  name: wemos-d1-mini-dev
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "ocDTS3PauRsR4d/tiZaW7WzUfLiwn+DbN0Pt3AawV8g="
+
+ota:
+  password: "d3a1e887f050cf1e622156c8e36d87ba"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Wemos-D1-Mini-Dev"
+    password: "uLYHtg05zPPP"
+
+captive_portal:
+
+logger:
+
+esp8266:
+  board: d1_mini
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: D3
+      inverted: true
+      mode:
+        input: true
+        pullup: false
+    name: led-status
