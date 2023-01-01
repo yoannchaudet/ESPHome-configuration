@@ -1,7 +1,7 @@
 substitutions:
-  device_id: christmas_tree
-  device_name: christmas-tree
-  friendly_name: Christmas Tree
+  device_id: yoann_office_light
+  device_name: yoann-office-light
+  friendly_name: Yoann Office Light
 
 <<: !include {
   file: "common/networking.yaml",
