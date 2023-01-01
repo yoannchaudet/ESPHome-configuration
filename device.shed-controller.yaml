@@ -97,7 +97,7 @@ uart:
     rx_buffer_size: 256
   # Smart Shunt
   - id: uart1
-    rx_pin: GPIO15
+    rx_pin: GPIO35
     baud_rate: 19200
     stop_bits: 1
     data_bits: 8

@@ -14,5 +14,4 @@ wifi:
   ap:
     ssid: ${device_id}
     password: ${wifi_ap_password}
-  use_address: ${use_address}
 captive_portal:
