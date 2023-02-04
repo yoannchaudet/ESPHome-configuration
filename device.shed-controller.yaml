@@ -59,7 +59,7 @@ switch:
   - platform: gpio
     pin: GPIO19
     id: "${device_id}_relay_6"
-    name: "${friendly_name} Relay 6"
+    name: "${friendly_name} Shed Outdoor String Light"
   - platform: gpio
     pin: GPIO18
     id: "${device_id}_relay_7"
@@ -67,7 +67,7 @@ switch:
   - platform: gpio
     pin: GPIO5
     id: "${device_id}_relay_8"
-    name: "${friendly_name} Relay 8"
+    name: "${friendly_name} Battery Warmer"
   - platform: template
     id: "${device_id}_inverter"
     name: "${friendly_name} Inverter"
