@@ -1,7 +1,7 @@
 substitutions:
-  device_id: christmas_outdoor_lights
-  device_name: christmas-outdoor-lights
-  friendly_name: Christmas Outdoor Lights
+  device_id: generic_plug_01
+  device_name: generic-plug-01
+  friendly_name: Generic Plug 01
 
 <<: !include {
   file: "common/networking.yaml",
@@ -10,8 +10,8 @@ substitutions:
     wifi_ssid: !secret wifi_ssid,
     wifi_password: !secret wifi_password,
     wifi_ap_password: !secret wifi_ap_password,
-    encryption_key: !secret christmas_outdoor_lights_encryption_key,
-    ota_password: !secret christmas_outdoor_lights_ota_password,
+    encryption_key: !secret generic_plug_01_encryption_key,
+    ota_password: !secret generic_plug_01_ota_password,
   }
 }
 
