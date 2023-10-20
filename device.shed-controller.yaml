@@ -91,12 +91,12 @@ external_components:
 
 uart:
   # MPTT Charge Controller
-  - id: uart0
+  - id: myuart0
     rx_pin: GPIO14
     baud_rate: 19200
     rx_buffer_size: 256
   # Smart Shunt
-  - id: uart1
+  - id: myuart1
     rx_pin: GPIO35
     baud_rate: 19200
     stop_bits: 1
@@ -107,12 +107,12 @@ uart:
 # MPTT Charge Controller
 victron:
   id: victron0
-  uart_id: uart0
+  uart_id: myuart0
   throttle: 10s # real is 1 datapoint per minute
 
 # Smart Shunt
 victron_smart_shunt:
-  uart_id: uart1
+  uart_id: myuart1
 
 # Sensors
 sensor:
