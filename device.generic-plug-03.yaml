@@ -1,0 +1,18 @@
+substitutions:
+  device_id: generic_plug_03
+  device_name: generic-plug-03
+  friendly_name: Generic Plug 03
+
+<<: !include {
+  file: "common/networking.yaml",
+  vars: {
+    device_id: "${device_id}",
+    wifi_ssid: !secret wifi_ssid,
+    wifi_password: !secret wifi_password,
+    wifi_ap_password: !secret wifi_ap_password,
+    encryption_key: !secret generic_plug_03_encryption_key,
+    ota_password: !secret generic_plug_03_ota_password,
+  }
+}
+
+<<: !include templates/teckin-sp10.yaml
