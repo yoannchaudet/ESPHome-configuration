@@ -31,6 +31,21 @@ esp32:
 logger:
   baud_rate: 0 # Disable UART logging
 
+external_components:
+  - source: github://Fabian-Schmidt/esphome-victron_ble
+
+# Bluetooth hub
+esp32_ble_tracker:
+
+victron_ble:
+  - id: smartshunt
+    mac_address: !secret shed_controller_smartshunt_mac_address
+    bindkey: !secret shed_controller_smartshunt_encryption_key
+
+  - id: smartsolar
+    mac_address: !secret shed_controller_smartsolar_mac_address
+    bindkey: !secret shed_controller_smartsolar_encryption_key
+
 status_led:
   #
   # Status led
@@ -88,6 +103,22 @@ sensor:
   #
   - !include ./common/sensor.wifi_signal.yaml
   - !include ./common/sensor.uptime.yaml
+
+  #
+  # Victron
+  #
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Current"
+    type: BATTERY_CURRENT
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "Battery Voltage"
+    type: BATTERY_VOLTAGE
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "Battery Current"
+    type: BATTERY_CURRENT
 
 text_sensor:
   #
