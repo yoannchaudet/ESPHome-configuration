@@ -32,6 +32,8 @@ logger:
   baud_rate: 0 # Disable UART logging
 
 external_components:
+  # Example configuration:
+  # https://github.com/Fabian-Schmidt/esphome-victron_ble/blob/0ec3a15248b52b29a53420dbef27237430c4dd6b/victron_ble.yaml
   - source: github://Fabian-Schmidt/esphome-victron_ble
 
 # Bluetooth hub
@@ -107,10 +109,34 @@ sensor:
   #
   # Victron
   #
+
+  # SmartShunt (battery interface)
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Time remaining"
+    type: TIME_TO_GO
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Battery voltage"
+    type: BATTERY_VOLTAGE
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Battery temperature"
+    type: TEMPERATURE
   - platform: victron_ble
     victron_ble_id: smartshunt
     name: "Current"
     type: BATTERY_CURRENT
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Consumed Ah"
+    type: CONSUMED_AH
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "State of charge"
+    type: STATE_OF_CHARGE
+
+  # SmartSolar (MPTT controller)
   - platform: victron_ble
     victron_ble_id: smartsolar
     name: "Battery Voltage"
@@ -119,12 +145,44 @@ sensor:
     victron_ble_id: smartsolar
     name: "Battery Current"
     type: BATTERY_CURRENT
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "Yield Today"
+    type: YIELD_TODAY
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "PV Power"
+    type: PV_POWER
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "Load Current"
+    type: LOAD_CURRENT
 
 text_sensor:
   #
   # Common: ESPHome version
   #
   - !include ./common/text_sensor.version.yaml
+
+  #
+  # Victron
+  #
+
+  # SmartShunt (battery interface)
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Battery Alarm reason"
+    type: ALARM_REASON
+
+  # SmartSolar (MPTT controller)
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "MPPT state"
+    type: DEVICE_STATE
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "MPPT Error reason"
+    type: CHARGER_ERROR
 
 binary_sensor:
   #
@@ -146,3 +204,23 @@ binary_sensor:
         input: true
         pullup: true
     name: inverter-error
+
+  #
+  # Victron
+  #
+
+  # SmartShunt (battery interface)
+  - platform: victron_ble
+    victron_ble_id: smartshunt
+    name: "Battery has Alarm"
+    type: ALARM
+
+  # SmartSolar (MPTT controller)
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "MPPT is in Fault state"
+    type: DEVICE_STATE_FAULT
+  - platform: victron_ble
+    victron_ble_id: smartsolar
+    name: "MPPT has Error"
+    type: CHARGER_ERROR
