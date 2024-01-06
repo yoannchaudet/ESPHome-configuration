@@ -43,11 +43,13 @@ victron:
   - uart_id: smartshunt_uart
     id: smartshunt
     throttle: 10s
+    async_uart: true
 
   # SmartSolar (MPTT controller)
   - uart_id: smartsolar_uart
     id: smartsolar
     throttle: 10s
+    async_uart: true
 
 uart:
   # SmartShunt (battery interface)
@@ -157,14 +159,6 @@ sensor:
       name: "${friendly_name} panel current"
     battery_voltage:
       name: "${friendly_name} battery voltage"
-    charging_mode_id:
-      name: "${friendly_name} charging mode id"
-    error_code:
-      name: "${friendly_name} error code"
-    tracking_mode_id:
-      name: "${friendly_name} tracking mode id"
-    load_current:
-      name: "${friendly_name} load current"
 
 text_sensor:
   #
