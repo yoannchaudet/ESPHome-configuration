@@ -36,6 +36,7 @@ external_components:
   # so I can bring in patches and make improvements as needed (before
   # they are contributed back)
   - source: github://yoannchaudet/VictronMPPT-ESPHOME
+    refresh: 0s # Check for new version each time
 
 victron:
   uart_id: smartshunt_uart
@@ -130,10 +131,6 @@ sensor:
       name: "${friendly_name} time to go"
     last_full_charge:
       name: "${friendly_name} last full charge"
-    amount_of_discharged_energy:
-      name: "${friendly_name} amount of discharged energy"
-    amount_of_charged_energy:
-      name: "${friendly_name} amount of charged energy"
 
   # SmartSolar (MPTT controller)
   # WIP
