@@ -115,25 +115,25 @@ sensor:
   - platform: victron
     victron_id: smartshunt
     battery_voltage:
-      name: "${name} battery voltage"
+      name: "${friendly_name} battery voltage"
     battery_current:
-      name: "${name} battery current"
+      name: "${friendly_name} battery current"
     battery_temperature:
-      name: "${name} battery temperature"
+      name: "${friendly_name} battery temperature"
     instantaneous_power:
-      name: "${name} instantaneous power"
+      name: "${friendly_name} instantaneous power"
     consumed_amp_hours:
-      name: "${name} consumed amp hours"
+      name: "${friendly_name} consumed amp hours"
     state_of_charge:
-      name: "${name} state of charge"
+      name: "${friendly_name} state of charge"
     time_to_go:
-      name: "${name} time to go"
+      name: "${friendly_name} time to go"
     last_full_charge:
-      name: "${name} last full charge"
+      name: "${friendly_name} last full charge"
     amount_of_discharged_energy:
-      name: "${name} amount of discharged energy"
+      name: "${friendly_name} amount of discharged energy"
     amount_of_charged_energy:
-      name: "${name} amount of charged energy"
+      name: "${friendly_name} amount of charged energy"
 
   # SmartSolar (MPTT controller)
   # WIP
