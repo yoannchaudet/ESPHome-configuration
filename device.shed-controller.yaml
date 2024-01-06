@@ -39,16 +39,28 @@ external_components:
     refresh: 0s # Check for new version each time
 
 victron:
-  uart_id: smartshunt_uart
-  id: smartshunt
-  throttle: 10s
+  # SmartShunt (battery interface)
+  - uart_id: smartshunt_uart
+    id: smartshunt
+    throttle: 10s
+
+  # SmartSolar (MPTT controller)
+  - uart_id: smartsolar_uart
+    id: smartsolar
+    throttle: 10s
 
 uart:
-  # SmartShunt serial
-  id: smartshunt_uart
-  rx_pin: GPIO35
-  baud_rate: 19200
-  rx_buffer_size: 256
+  # SmartShunt (battery interface)
+  - id: smartshunt_uart
+    rx_pin: GPIO35
+    baud_rate: 19200
+    rx_buffer_size: 256
+
+  # SmartSolar (MPTT controller)
+  - id: smartsolar_uart
+    rx_pin: GPIO14
+    baud_rate: 19200
+    rx_buffer_size: 256
 
 status_led:
   #
@@ -133,7 +145,26 @@ sensor:
       name: "${friendly_name} last full charge"
 
   # SmartSolar (MPTT controller)
-  # WIP
+  - platform: victron
+    victron_id: smartsolar
+    yield_today:
+      name: "${friendly_name} yield today"
+    panel_voltage:
+      name: "${friendly_name} panel voltage"
+    panel_power:
+      name: "${friendly_name} panel power"
+    battery_current:
+      name: "${friendly_name} panel current"
+    battery_voltage:
+      name: "${friendly_name} battery voltage"
+    charging_mode_id:
+      name: "${friendly_name} charging mode id"
+    error_code:
+      name: "${friendly_name} error code"
+    tracking_mode_id:
+      name: "${friendly_name} tracking mode id"
+    load_current:
+      name: "${friendly_name} load current"
 
 text_sensor:
   #
@@ -146,7 +177,14 @@ text_sensor:
   #
 
   # SmartSolar (MPTT controller)
-  # WIP
+  - platform: victron
+    victron_id: smartsolar
+    charging_mode:
+      name: "${friendly_name} charging mode"
+    error:
+      name: "${friendly_name} error"
+    tracking_mode:
+      name: "${friendly_name} tracking mode"
 
 binary_sensor:
   #
@@ -168,10 +206,3 @@ binary_sensor:
         input: true
         pullup: true
     name: inverter-error
-
-  #
-  # Victron
-  #
-
-  # SmartSolar (MPTT controller)
-  # WIP
