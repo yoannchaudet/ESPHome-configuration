@@ -35,7 +35,7 @@ external_components:
   # This is a fork of https://github.com/KinDR007/VictronMPPT-ESPHOME
   # so I can bring in patches and make improvements as needed (before
   # they are contributed back)
-  - source: github://yoannchaudet/VictronMPPT-ESPHOME@async-uart
+  - source: github://yoannchaudet/VictronMPPT-ESPHOME
     refresh: 0s # Check for new version each time
 
 victron:
@@ -43,13 +43,13 @@ victron:
   - uart_id: smartshunt_uart
     id: smartshunt
     throttle: 10s
-    async_uart: true
+    # async_uart: true
 
   # SmartSolar (MPTT controller)
   - uart_id: smartsolar_uart
     id: smartsolar
     throttle: 10s
-    async_uart: true
+    # async_uart: true
 
 uart:
   # SmartShunt (battery interface)
