@@ -35,7 +35,7 @@ external_components:
   # This is a fork of https://github.com/KinDR007/VictronMPPT-ESPHOME
   # so I can bring in patches and make improvements as needed (before
   # they are contributed back)
-  - source: github://yoannchaudet/VictronMPPT-ESPHOME
+  - source: github://yoannchaudet/VictronMPPT-ESPHOME@async-uart
     refresh: 0s # Check for new version each time
 
 victron:
