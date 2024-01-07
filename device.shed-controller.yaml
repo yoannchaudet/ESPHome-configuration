@@ -43,26 +43,24 @@ victron:
   - uart_id: smartshunt_uart
     id: smartshunt
     throttle: 10s
-    # async_uart: true
 
   # SmartSolar (MPTT controller)
   - uart_id: smartsolar_uart
     id: smartsolar
     throttle: 10s
-    # async_uart: true
 
 uart:
   # SmartShunt (battery interface)
   - id: smartshunt_uart
     rx_pin: GPIO35
     baud_rate: 19200
-    rx_buffer_size: 256
+    rx_buffer_size: 512
 
   # SmartSolar (MPTT controller)
   - id: smartsolar_uart
     rx_pin: GPIO14
     baud_rate: 19200
-    rx_buffer_size: 256
+    rx_buffer_size: 512
 
 status_led:
   #
