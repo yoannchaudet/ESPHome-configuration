@@ -1,5 +1,5 @@
 substitutions:
-  device_id: garage-door_1
+  device_id: garage_door_1
   device_name: garage-door-1
   friendly_name: Garage Door 1
 
