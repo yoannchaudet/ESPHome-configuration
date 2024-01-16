@@ -1,0 +1,14 @@
+esphome:
+  name: "${device_name}"
+  comment: "${friendly_name} (ratgdo v2.5i)"
+  name_add_mac_suffix: false
+
+packages:
+  ratgdo.esphome: github://ratgdo/esphome-ratgdo/v25iboard.yaml@main
+
+sensor:
+  - !include ../common/sensor.wifi_signal.yaml
+  - !include ../common/sensor.uptime.yaml
+
+text_sensor:
+  - !include ../common/text_sensor.version.yaml

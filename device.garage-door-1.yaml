@@ -1,0 +1,18 @@
+substitutions:
+  device_id: garage-door_1
+  device_name: garage-door-1
+  friendly_name: Garage Door 1
+
+<<: !include {
+  file: "common/networking.yaml",
+  vars: {
+    device_id: "${device_id}",
+    wifi_ssid: !secret wifi_ssid,
+    wifi_password: !secret wifi_password,
+    wifi_ap_password: !secret wifi_ap_password,
+    encryption_key: !secret garage_door_1_encryption_key,
+    ota_password: !secret garage_door_1_ota_password,
+  }
+}
+
+<<: !include templates/ratgdov2.5i.yaml
