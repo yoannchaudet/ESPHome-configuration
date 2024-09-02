@@ -5,6 +5,7 @@ api:
 
 # Set an OTA password
 ota:
+  platform: esphome
   password: ${ota_password}
 
 # Configure Wifi + backup AP
