@@ -1,7 +1,7 @@
 substitutions:
-  device_id: yoann_office_meetings_lights
-  device_name: yoann-office-meeting-lights
-  friendly_name: Meetings Lights @ Yoann Office
+  device_id: generic_plug_04
+  device_name: generic-plug-04
+  friendly_name: Generic Plug 04
 
 <<: !include {
   file: "common/networking.yaml",
@@ -10,8 +10,8 @@ substitutions:
     wifi_ssid: !secret wifi_ssid,
     wifi_password: !secret wifi_password,
     wifi_ap_password: !secret wifi_ap_password,
-    encryption_key: !secret yoann_office_meetings_lights_encryption_key,
-    ota_password: !secret yoann_office_meetings_lights_ota_password,
+    encryption_key: !secret generic_plug_04_encryption_key,
+    ota_password: !secret generic_plug_04_ota_password,
   }
 }
 
