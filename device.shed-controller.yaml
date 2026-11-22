@@ -156,7 +156,7 @@ sensor:
     battery_current:
       name: "${friendly_name} panel current"
     battery_voltage:
-      name: "${friendly_name} battery voltage mptt"
+      name: "${friendly_name} battery voltage mppt"
 
 text_sensor:
   #
