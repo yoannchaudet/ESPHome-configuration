@@ -35,7 +35,7 @@ external_components:
   # This is a fork of https://github.com/KinDR007/VictronMPPT-ESPHOME
   # so I can bring in patches and make improvements as needed (before
   # they are contributed back)
-  - source: github://yoannchaudet/VictronMPPT-ESPHOME
+  - source: github://yoannchaudet/VictronMPPT-ESPHOME@main
     refresh: 0s # Check for new version each time
 
 victron:
@@ -156,7 +156,7 @@ sensor:
     battery_current:
       name: "${friendly_name} panel current"
     battery_voltage:
-      name: "${friendly_name} battery voltage"
+      name: "${friendly_name} battery voltage mppt"
 
 text_sensor:
   #
